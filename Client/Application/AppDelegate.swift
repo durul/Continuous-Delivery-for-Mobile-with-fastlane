@@ -64,6 +64,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIViewControllerRestorati
     }
 
     @discardableResult fileprivate func startApplication(_ application: UIApplication, withLaunchOptions launchOptions: [AnyHashable: Any]?) -> Bool {
+        log.debug("Initializing Sentry…")
+        // Need to get "settings.sendUsageData" this way so that Sentry can be initialized
+        // before getting the Profile.
+        let sendUsageData = NSUserDefaultsPrefs(prefix: "profile").boolForKey("settings.sendUsageData") ?? true
+        SentryIntegration.shared.setup(sendUsageData: sendUsageData)
+        
         log.debug("Setting UA…")
         // Set the Firefox UA for browsing.
         setUserAgent()
@@ -89,9 +95,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIViewControllerRestorati
         log.debug("Getting profile…")
         let profile = getProfile(application)
         appStateStore = AppStateStore(prefs: profile.prefs)
-
-        log.debug("Initializing Sentry…")
-        SentryIntegration.shared.setup(profile: profile)
 
         log.debug("Initializing telemetry…")
         Telemetry.initWithPrefs(profile.prefs)
@@ -359,57 +362,64 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIViewControllerRestorati
             return false
         }
 
-        if AppConstants.MOZ_FXA_DEEP_LINK_FORM_FILL {
-            // Extract optional FxA deep-linking options
-            let query = url.getQuery()
-            let host = url.host
-            
-            // FxA form filling requires a `signin` query param and host = fxa-signin
-            // Ex. firefox://fxa-signin?signin=<token>&someQuery=<data>...
-            if query["signin"] != nil && host == "fxa-signin" {
+        guard let host = url.host else {
+            log.warning("Cannot handle nil URL host")
+            return false
+        }
+
+        let query = url.getQuery()
+
+        switch host {
+        case "open-url":
+            var url: String?
+            var isPrivate: Bool = false
+
+            if let queryUrl = query["url"]?.unescape() {
+                url = queryUrl
+                isPrivate = NSString(string: query["private"] ?? "false").boolValue
+            }
+
+            let params: LaunchParams
+
+            if let url = url, let newURL = URL(string: url) {
+                params = LaunchParams(url: newURL, isPrivate: isPrivate)
+            } else {
+                params = LaunchParams(url: nil, isPrivate: isPrivate)
+            }
+
+            if application.applicationState == .active {
+                // If we are active then we can ask the BVC to open the new tab right away.
+                // Otherwise, we remember the URL and we open it in applicationDidBecomeActive.
+                launchFromURL(params)
+            } else {
+                openInFirefoxParams = params
+            }
+
+            return true
+        case "deep-link":
+            guard let url = query["url"] else {
+                break
+            }
+            Router.shared.routeURL(url)
+            return true
+        case "fxa-signin":
+            if AppConstants.MOZ_FXA_DEEP_LINK_FORM_FILL {
+                // FxA form filling requires a `signin` query param and host = fxa-signin
+                // Ex. firefox://fxa-signin?signin=<token>&someQuery=<data>...
+                guard let signinQuery = query["signin"] else {
+                    break
+                }
                 let fxaParams: FxALaunchParams
                 fxaParams = FxALaunchParams(query: query)
                 launchFxAFromURL(fxaParams)
                 return true
             }
+            break
+        default: ()
         }
-
-        var url: String?
-        var isPrivate: Bool = false
-        
-        for item in (components.queryItems ?? []) as [URLQueryItem] {
-            switch item.name {
-            case "url":
-                url = item.value
-            case "private":
-                isPrivate = NSString(string: item.value ?? "false").boolValue
-            case "deep-link":
-                guard let value = item.value else { break }
-                Router.shared.routeURL(value)
-                return true
-            default: ()
-            }
-        }
-        
-        let params: LaunchParams
-
-        if let url = url, let newURL = URL(string: url) {
-            params = LaunchParams(url: newURL, isPrivate: isPrivate)
-        } else {
-            params = LaunchParams(url: nil, isPrivate: isPrivate)
-        }
-
-        if application.applicationState == .active {
-            // If we are active then we can ask the BVC to open the new tab right away. 
-            // Otherwise, we remember the URL and we open it in applicationDidBecomeActive.
-            launchFromURL(params)
-        } else {
-            openInFirefoxParams = params
-        }
-
-        return true
+        return false
     }
-    
+
     func launchFxAFromURL(_ params: FxALaunchParams) {
         guard params.query != nil else {
             return
@@ -425,7 +435,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIViewControllerRestorati
             self.browserViewController.openBlankNewTab(isPrivate: isPrivate)
         }
 
-        LeanplumIntegration.sharedInstance.track(eventName: .openedNewTab, withInfo: "Source: External App or Extension")
+        LeanplumIntegration.sharedInstance.track(eventName: .openedNewTab, withParameters: ["Source":"External App or Extension" as AnyObject])
     }
 
     func application(_ application: UIApplication, shouldAllowExtensionPointIdentifier extensionPointIdentifier: UIApplicationExtensionPointIdentifier) -> Bool {
@@ -451,6 +461,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIViewControllerRestorati
         // We could load these here, but then we have to futz with the tab counter
         // and making NSURLRequests.
         self.browserViewController.loadQueuedTabs()
+        application.applicationIconBadgeNumber = 0
 
         // handle quick actions is available
         let quickActions = QuickActions.sharedInstance
@@ -758,10 +769,46 @@ extension AppDelegate {
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         NSLog("APNS NOTIFICATION \(userInfo)")
 
+        // At this point, we know that NotificationService has been run.
+        // We get to this point if the notification was received while the app was in the foreground
+        // OR the app was backgrounded and now the user has tapped on the notification.
+        // Either way, if this method is being run, then the app is foregrounded.
+
+        // Either way, we should zero the badge number.
+        application.applicationIconBadgeNumber = 0
+
         guard let profile = self.profile else {
             return completionHandler(.noData)
         }
 
+        // NotificationService will have decrypted the push message, and done some syncing 
+        // activity. If the `client` collection was synced, and there are `displayURI` commands (i.e. sent tabs)
+        // NotificationService will have collected them for us in the userInfo.
+        if let serializedTabs = userInfo["sentTabs"] as? [[String: String]] {
+            // Let's go ahead and open those.
+            let receivedURLs = serializedTabs.flatMap { item -> URL? in
+                guard let tabURL = item["url"] else {
+                    return nil
+                }
+                return URL(string: tabURL)
+            }
+
+            if receivedURLs.count > 0 {
+                DispatchQueue.main.async {
+                    for url in receivedURLs {
+                        self.browserViewController.switchToTabForURLOrOpen(url, isPrivileged: false)
+                    }
+                }
+                return completionHandler(.newData)
+            }
+        }
+
+        // So we've got here, and there are no sent tabs.
+        // There are a number of possibilities here: 
+        // a) we started syncing in the NotificationService, but aborted once we reached the end.
+        // b) we did some non-displayURI commands which finished properly.
+        // 
+        // For now, we should just re-process the message handling.
         let handler = FxAPushMessageHandler(with: profile)
         handler.handle(userInfo: userInfo).upon { res in
             completionHandler(res.isSuccess ? .newData : .failed)
@@ -769,13 +816,8 @@ extension AppDelegate {
     }
 
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
-        log.info("APNS NOTIFICATION \(userInfo)")
-        guard let profile = self.profile else {
-            return
-        }
-
-        let handler = FxAPushMessageHandler(with: profile)
-        handler.handle(userInfo: userInfo)
+        let completionHandler: (UIBackgroundFetchResult) -> Void = { _ in }
+        self.application(application, didReceiveRemoteNotification: userInfo, fetchCompletionHandler: completionHandler)
     }
 }
 
