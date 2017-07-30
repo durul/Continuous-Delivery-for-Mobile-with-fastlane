@@ -38,13 +38,15 @@ platform :ios do
     # You can also use other beta testing services here (run `fastlane actions`)
   end
 
-  desc "Deploy a new version to the App Store"
   lane :release do
-    # match(type: "appstore")
-    # snapshot
-    gym(scheme: "Fennec") # Build your app - more options available
-    deliver(force: true)
-    # frameit
+    produce(
+    username: 'doronkatz@mac.com',
+    app_identifier: 'com.doronkatz.firefox',
+    app_name: 'Firefox for iOS',
+    language: 'English',
+    app_version: '1.0',
+    team_name: 'Doron Katz' # only necessary when in multiple teams
+  )
   end
 
   # You can define as many lanes as you want
