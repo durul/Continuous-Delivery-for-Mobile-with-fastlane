@@ -27,13 +27,18 @@ platform :ios do
     scan
   end
 
-  desc "Submit a new Beta Build to Apple TestFlight"
-  desc "This will also make sure the profile is up to date"
   lane :beta do
     register_devices(devices_file: "devices.txt")
     match(git_url: "git@bitbucket.org:doron_katz/my-fastlane-keys.git",
       type: "development",
       app_identifier: "com.doronkatz.firefox")
+      gym(scheme: "Fennec",
+        output_name:"firefox.ipa",
+        configuration: "development",
+        export_method: "development",
+        silent: false,
+        output_directory: "./Export"
+      )
     # sh "your_script.sh"
     # You can also use other beta testing services here (run `fastlane actions`)
   end
