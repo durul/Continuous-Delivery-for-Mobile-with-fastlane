@@ -44,14 +44,19 @@ platform :ios do
   end
 
   lane :release do
+    # by default deliver will call precheck and warn you of any problems
+    # if you want precheck to halt submitting to app review, you can pass
+    # precheck_default_rule_level: :error
+    deliver(precheck_default_rule_level: :error)
+
     produce(
-    username: 'doronkatz@mac.com',
-    app_identifier: 'com.doronkatz.firefox',
-    app_name: 'Firefox for iOS',
-    language: 'English',
-    app_version: '1.0',
-    team_name: 'Doron Katz' # only necessary when in multiple teams
-  )
+      username: 'doronkatz@mac.com',
+      app_identifier: 'com.doronkatz.firefox',
+      app_name: 'Firefox for iOS',
+      language: 'English',
+      app_version: '1.0',
+      team_name: 'Doron Katz' # only necessary when in multiple teams
+    )
   end
 
   # You can define as many lanes as you want
