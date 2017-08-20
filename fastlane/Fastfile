@@ -39,8 +39,26 @@ platform :ios do
         silent: false,
         output_directory: "./Export"
       )
+
+      testflight(
+        username: "your@email.com",
+        app_identifier: "com.doronkatz.firefox",
+        beta_app_description: "This is a new build and should be dynamic, from prompt",
+        beta_app_feedback_email: "feedback@firefoxapp.com",
+        itc_provider: "abcde12345" # pass a specific value to the iTMSTransporter -itc_provider option
+      )
+
     # sh "your_script.sh"
     # You can also use other beta testing services here (run `fastlane actions`)
+  end
+
+  lane: crashlytics do
+    crashlytics(
+      crashlytics_path: "./Pods/Crashlytics/", # path to your Crashlytics submit binary.
+      api_token: "xxx",
+      build_secret: "xxx",
+      ipa_path: "./app.ipa"
+    )
   end
 
   lane :release do
