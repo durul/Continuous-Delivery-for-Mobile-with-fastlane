@@ -52,7 +52,7 @@ platform :ios do
     # You can also use other beta testing services here (run `fastlane actions`)
   end
 
-  lane: crashlytics do
+  lane :crashlytics do
     crashlytics(
       crashlytics_path: "./Pods/Crashlytics/", # path to your Crashlytics submit binary.
       api_token: "xxx",
@@ -66,7 +66,7 @@ platform :ios do
     # if you want precheck to halt submitting to app review, you can pass
     # precheck_default_rule_level: :error
     deliver(precheck_default_rule_level: :error)
-
+    snapshot
     produce(
       username: 'doronkatz@mac.com',
       app_identifier: 'com.doronkatz.firefox',
