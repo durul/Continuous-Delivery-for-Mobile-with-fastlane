@@ -27,6 +27,11 @@ platform :ios do
     scan
   end
 
+  lane :gen_screenshots do
+    snapshot
+    frameit(white: true, path: './fastlane/screenshots')
+  end
+
   lane :beta do
     register_devices(devices_file: "devices.txt")
     match(git_url: "git@bitbucket.org:doron_katz/my-fastlane-keys.git",
