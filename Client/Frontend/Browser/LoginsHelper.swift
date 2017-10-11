@@ -173,7 +173,7 @@ class LoginsHelper: TabHelper {
                     self.snackBar = nil
                     self.profile.logins.addLogin(login)
 
-                    LeanplumIntegration.sharedInstance.track(eventName: .savedLoginAndPassword)
+                    //LeanplumIntegration.sharedInstance.track(eventName: .savedLoginAndPassword)
                 })
             ])
         tab?.addSnackbar(snackBar!)

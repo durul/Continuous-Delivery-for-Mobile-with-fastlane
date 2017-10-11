@@ -159,19 +159,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIViewControllerRestorati
         
         adjustIntegration = AdjustIntegration(profile: profile)
 
-        let leanplum = LeanplumIntegration.sharedInstance
-        leanplum.setup(profile: profile)
-        leanplum.setEnabled(true)
+//        let leanplum = LeanplumIntegration.sharedInstance
+//        leanplum.setup(profile: profile)
+//        leanplum.setEnabled(true)
 
         // We need to check if the app is a clean install to use for
         // preventing the What's New URL from appearing.
         let prefs = getProfile(application).prefs
         if prefs.intForKey(IntroViewControllerSeenProfileKey) == nil {
             prefs.setString(AppInfo.appVersion, forKey: LatestAppVersionProfileKey)
-            leanplum.track(eventName: .firstRun)
+           // leanplum.track(eventName: .firstRun)
         } else if prefs.boolForKey("SecondRun") == nil {
             prefs.setBool(true, forKey: "SecondRun")
-            leanplum.track(eventName: .secondRun)
+            //leanplum.track(eventName: .secondRun)
         }
 
         log.debug("Updating authentication keychain state to reflect system state")
@@ -435,7 +435,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIViewControllerRestorati
             self.browserViewController.openBlankNewTab(isPrivate: isPrivate)
         }
 
-        LeanplumIntegration.sharedInstance.track(eventName: .openedNewTab, withParameters: ["Source":"External App or Extension" as AnyObject])
+        //LeanplumIntegration.sharedInstance.track(eventName: .openedNewTab, withParameters: ["Source":"External App or Extension" as AnyObject])
     }
 
     func application(_ application: UIApplication, shouldAllowExtensionPointIdentifier extensionPointIdentifier: UIApplicationExtensionPointIdentifier) -> Bool {

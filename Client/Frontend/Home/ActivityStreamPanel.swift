@@ -634,7 +634,7 @@ extension ActivityStreamPanel: HomePanelContextMenu {
         let openInNewTabAction = ActionOverlayTableViewAction(title: Strings.OpenInNewTabContextMenuTitle, iconString: "") { action in
             self.homePanelDelegate?.homePanelDidRequestToOpenInNewTab(siteURL, isPrivate: false)
             self.telemetry.reportEvent(.NewTab, source: pingSource, position: index)
-            LeanplumIntegration.sharedInstance.track(eventName: .openedNewTab, withParameters: ["Source":"Activity Stream Long Press Context Menu" as AnyObject])
+            //LeanplumIntegration.sharedInstance.track(eventName: .openedNewTab, withParameters: ["Source":"Activity Stream Long Press Context Menu" as AnyObject])
         }
 
         let openInNewPrivateTabAction = ActionOverlayTableViewAction(title: Strings.OpenInNewPrivateTabContextMenuTitle, iconString: "") { action in

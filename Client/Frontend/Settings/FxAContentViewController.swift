@@ -128,7 +128,7 @@ class FxAContentViewController: SettingsContentViewController, WKScriptMessageHa
         helper.delegate = self
         helper.application(app, didReceiveAccountJSON: data)
 
-        LeanplumIntegration.sharedInstance.setUserAttributes(attributes: [UserAttributeKeyName.signedInSync.rawValue : profile.hasAccount()])
+        //LeanplumIntegration.sharedInstance.setUserAttributes(attributes: [UserAttributeKeyName.signedInSync.rawValue : profile.hasAccount()])
     }
 
     @objc fileprivate func userDidVerify(_ notification: Notification) {

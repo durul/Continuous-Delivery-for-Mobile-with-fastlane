@@ -80,6 +80,11 @@ platform :ios do
       app_version: '1.0',
       team_name: 'Doron Katz' # only necessary when in multiple teams
     )
+    deliver(
+      submit_for_review: true,
+      force: true,
+      metadata_path: "./metadata"
+    )
   end
 
   # You can define as many lanes as you want
