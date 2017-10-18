@@ -1,0 +1,6 @@
+scheme "Fennec"
+devices ["iPhone 7s", "iPhone 7"]
+project "Client.xcodeproj"
+clean true
+open_report true
+output_types "html"

@@ -1,0 +1,607 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuites name='FirefoxFastlaneTests.xctest' tests='432' failures='1'>
+  <testsuite name='StorageTests.CertTests' tests='1' failures='0'>
+    <testcase classname='StorageTests.CertTests' name='testCertStore' time='0.004'/>
+  </testsuite>
+  <testsuite name='StorageTests.SQLRemoteClientsAndTabsTests' tests='2' failures='0'>
+    <testcase classname='StorageTests.SQLRemoteClientsAndTabsTests' name='testGetTabsForClient' time='0.135'/>
+    <testcase classname='StorageTests.SQLRemoteClientsAndTabsTests' name='testInsertGetClear' time='0.074'/>
+  </testsuite>
+  <testsuite name='StorageTests.SyncCommandsTests' tests='7' failures='0'>
+    <testcase classname='StorageTests.SyncCommandsTests' name='testCreateSyncCommandFromShareItem' time='0.219'/>
+    <testcase classname='StorageTests.SyncCommandsTests' name='testDeleteForAllClients' time='0.481'/>
+    <testcase classname='StorageTests.SyncCommandsTests' name='testDeleteForValidClient' time='0.491'/>
+    <testcase classname='StorageTests.SyncCommandsTests' name='testGetForAllClients' time='0.026'/>
+    <testcase classname='StorageTests.SyncCommandsTests' name='testInsertWithMultipleCommands' time='0.025'/>
+    <testcase classname='StorageTests.SyncCommandsTests' name='testInsertWithNoURLOrTitle' time='0.020'/>
+    <testcase classname='StorageTests.SyncCommandsTests' name='testInsertWithURLOnly' time='0.020'/>
+  </testsuite>
+  <testsuite name='StorageTests.TestBrowserDB' tests='1' failures='0'>
+    <testcase classname='StorageTests.TestBrowserDB' name='testMovesDB' time='0.049'/>
+  </testsuite>
+  <testsuite name='StorageTests.TestDeferredSqlite' tests='1' failures='0'>
+    <testcase classname='StorageTests.TestDeferredSqlite' name='testCancelling' time='0.002'/>
+  </testsuite>
+  <testsuite name='StorageTests.TestFaviconsTable' tests='1' failures='0'>
+    <testcase classname='StorageTests.TestFaviconsTable' name='testFaviconsTable' time='0.026'/>
+  </testsuite>
+  <testsuite name='StorageTests.TestSQLiteBookmarks' tests='6' failures='0'>
+    <testcase classname='StorageTests.TestSQLiteBookmarks' name='testBookmarks' time='0.039'/>
+    <testcase classname='StorageTests.TestSQLiteBookmarks' name='testBufferStorage' time='0.042'/>
+    <testcase classname='StorageTests.TestSQLiteBookmarks' name='testLocalAndMirror' time='0.077'/>
+    <testcase classname='StorageTests.TestSQLiteBookmarks' name='testRecursiveAndURLDelete' time='0.068'/>
+    <testcase classname='StorageTests.TestSQLiteBookmarks' name='testTreeBuilding' time='0.046'/>
+    <testcase classname='StorageTests.TestSQLiteBookmarks' name='testUnrootedBufferRowsDontAppearInTrees' time='0.029'/>
+  </testsuite>
+  <testsuite name='StorageTests.TestSQLiteHistory' tests='12' failures='0'>
+    <testcase classname='StorageTests.TestSQLiteHistory' name='testDomains' time='0.063'/>
+    <testcase classname='StorageTests.TestSQLiteHistory' name='testDomainUpgrade' time='0.029'/>
+    <testcase classname='StorageTests.TestSQLiteHistory' name='testFaviconTable' time='0.049'/>
+    <testcase classname='StorageTests.TestSQLiteHistory' name='testHistoryIsSynced' time='0.032'/>
+    <testcase classname='StorageTests.TestSQLiteHistory' name='testHistoryLocalAndRemoteVisits' time='0.079'/>
+    <testcase classname='StorageTests.TestSQLiteHistory' name='testHistoryTable' time='0.074'/>
+    <testcase classname='StorageTests.TestSQLiteHistory' name='testPinnedTopSites' time='0.094'/>
+    <testcase classname='StorageTests.TestSQLiteHistory' name='testTopSitesCache' time='8.861'/>
+    <testcase classname='StorageTests.TestSQLiteHistory' name='testTopSitesFiltersGoogle' time='10.032'/>
+    <testcase classname='StorageTests.TestSQLiteHistory' name='testTopSitesFrecencyOrder' time='8.381'/>
+    <testcase classname='StorageTests.TestSQLiteHistory' name='testUpgrades' time='0.206'/>
+    <testcase classname='StorageTests.TestSQLiteHistory' name='testUpgradesWithData' time='0.037'/>
+  </testsuite>
+  <testsuite name='StorageTests.TestSQLiteHistoryFilterSplitting' tests='6' failures='0'>
+    <testcase classname='StorageTests.TestSQLiteHistoryFilterSplitting' name='testWithDistinctWords' time='0.001'/>
+    <testcase classname='StorageTests.TestSQLiteHistoryFilterSplitting' name='testWithDistinctWordsAndWhitespace' time='0.001'/>
+    <testcase classname='StorageTests.TestSQLiteHistoryFilterSplitting' name='testWithIdenticalWords' time='0.001'/>
+    <testcase classname='StorageTests.TestSQLiteHistoryFilterSplitting' name='testWithSingleWord' time='0.001'/>
+    <testcase classname='StorageTests.TestSQLiteHistoryFilterSplitting' name='testWithSubstrings' time='0.001'/>
+    <testcase classname='StorageTests.TestSQLiteHistoryFilterSplitting' name='testWithSubstringsAndIdenticalWords' time='0.001'/>
+  </testsuite>
+  <testsuite name='StorageTests.TestSQLiteHistoryRecommendations' tests='7' failures='0'>
+    <testcase classname='StorageTests.TestSQLiteHistoryRecommendations' name='testBlacklistHighlights' time='0.084'/>
+    <testcase classname='StorageTests.TestSQLiteHistoryRecommendations' name='testBookmarkHighlights' time='0.890'/>
+    <testcase classname='StorageTests.TestSQLiteHistoryRecommendations' name='testClearHighlightsCache' time='0.043'/>
+    <testcase classname='StorageTests.TestSQLiteHistoryRecommendations' name='testHistoryHighlights' time='0.066'/>
+    <testcase classname='StorageTests.TestSQLiteHistoryRecommendations' name='testMetadataReturnedInHighlights' time='0.076'/>
+    <testcase classname='StorageTests.TestSQLiteHistoryRecommendations' name='testMostRecentUniqueDomainReturnedInHighlights' time='0.050'/>
+    <testcase classname='StorageTests.TestSQLiteHistoryRecommendations' name='testRemoveHighlightForURL' time='0.053'/>
+  </testsuite>
+  <testsuite name='StorageTests.TestSQLiteHistoryRecommendationsPerf' tests='1' failures='0'>
+    <testcase classname='StorageTests.TestSQLiteHistoryRecommendationsPerf' name='testRecommendationPref' time='50.546'/>
+  </testsuite>
+  <testsuite name='StorageTests.TestSQLiteHistoryTransactionUpdate' tests='1' failures='0'>
+    <testcase classname='StorageTests.TestSQLiteHistoryTransactionUpdate' name='testUpdateInTransaction' time='0.048'/>
+  </testsuite>
+  <testsuite name='StorageTests.TestSQLiteLogins' tests='9' failures='0'>
+    <testcase classname='StorageTests.TestSQLiteLogins' name='testAddInvalidLogin' time='0.015'/>
+    <testcase classname='StorageTests.TestSQLiteLogins' name='testAddLogin' time='0.013'/>
+    <testcase classname='StorageTests.TestSQLiteLogins' name='testGetOrder' time='0.013'/>
+    <testcase classname='StorageTests.TestSQLiteLogins' name='testRemoveLogin' time='0.013'/>
+    <testcase classname='StorageTests.TestSQLiteLogins' name='testRemoveLogins' time='0.017'/>
+    <testcase classname='StorageTests.TestSQLiteLogins' name='testRemoveManyLogins' time='3.270'/>
+    <testcase classname='StorageTests.TestSQLiteLogins' name='testSearchLogins' time='0.029'/>
+    <testcase classname='StorageTests.TestSQLiteLogins' name='testUpdateInvalidLogin' time='0.016'/>
+    <testcase classname='StorageTests.TestSQLiteLogins' name='testUpdateLogin' time='0.012'/>
+  </testsuite>
+  <testsuite name='StorageTests.TestSQLiteLoginsPerf' tests='3' failures='0'>
+    <testcase classname='StorageTests.TestSQLiteLoginsPerf' name='testLoginsGetAllPerf' time='21.296'/>
+    <testcase classname='StorageTests.TestSQLiteLoginsPerf' name='testLoginsSearchMatchAllPerf' time='23.231'/>
+    <testcase classname='StorageTests.TestSQLiteLoginsPerf' name='testLoginsSearchMatchOnePerf' time='2.146'/>
+  </testsuite>
+  <testsuite name='StorageTests.TestSQLiteMetadata' tests='3' failures='0'>
+    <testcase classname='StorageTests.TestSQLiteMetadata' name='testDuplicateCacheKeyInsert' time='0.037'/>
+    <testcase classname='StorageTests.TestSQLiteMetadata' name='testExpirationPurging' time='0.017'/>
+    <testcase classname='StorageTests.TestSQLiteMetadata' name='testInsertMetadata' time='0.013'/>
+  </testsuite>
+  <testsuite name='StorageTests.TestSchemaTable' tests='1' failures='0'>
+    <testcase classname='StorageTests.TestSchemaTable' name='testTable' time='0.021'/>
+  </testsuite>
+  <testsuite name='StorageTests.TestSwiftData' tests='6' failures='0'>
+    <testcase classname='StorageTests.TestSwiftData' name='testArrayCursor' time='0.047'/>
+    <testcase classname='StorageTests.TestSwiftData' name='testBusyTimeout' time='0.056'/>
+    <testcase classname='StorageTests.TestSwiftData' name='testDefaultSettings' time='0.044'/>
+    <testcase classname='StorageTests.TestSwiftData' name='testEncrypt' time='0.410'/>
+    <testcase classname='StorageTests.TestSwiftData' name='testFilledCursor' time='0.049'/>
+    <testcase classname='StorageTests.TestSwiftData' name='testNoWAL' time='0.045'/>
+  </testsuite>
+  <testsuite name='StorageTests.TestSyncableLogins' tests='5' failures='0'>
+    <testcase classname='StorageTests.TestSyncableLogins' name='testApplyLogin' time='0.033'/>
+    <testcase classname='StorageTests.TestSyncableLogins' name='testDeltas' time='0.012'/>
+    <testcase classname='StorageTests.TestSyncableLogins' name='testDiffers' time='0.008'/>
+    <testcase classname='StorageTests.TestSyncableLogins' name='testLocalNewStaysNewAndIsRemoved' time='0.015'/>
+    <testcase classname='StorageTests.TestSyncableLogins' name='testLoginsIsSynced' time='0.015'/>
+  </testsuite>
+  <testsuite name='ClientTests.ActivityStreamTests' tests='8' failures='0'>
+    <testcase classname='ClientTests.ActivityStreamTests' name='testBadStateEventsForHighlights' time='0.040'/>
+    <testcase classname='ClientTests.ActivityStreamTests' name='testBadStateEventsForTopSites' time='0.012'/>
+    <testcase classname='ClientTests.ActivityStreamTests' name='testContextMenuOnHighlightsEmitsRemoveDismissEvents' time='0.021'/>
+    <testcase classname='ClientTests.ActivityStreamTests' name='testContextMenuOnTopSiteEmitsRemoveEvent' time='0.023'/>
+    <testcase classname='ClientTests.ActivityStreamTests' name='testDeletionOfAllDefaultSites' time='0.046'/>
+    <testcase classname='ClientTests.ActivityStreamTests' name='testDeletionOfSingleSuggestedSite' time='1.020'/>
+    <testcase classname='ClientTests.ActivityStreamTests' name='testHighlightEmitsEventOnTap' time='1.012'/>
+    <testcase classname='ClientTests.ActivityStreamTests' name='testSessionReportedWhenViewAppearsAndDisappears' time='1.032'/>
+  </testsuite>
+  <testsuite name='ClientTests.AuthenticatorTests' tests='3' failures='0'>
+    <testcase classname='ClientTests.AuthenticatorTests' name='testChallengeMatchesDuplicateLoginEntries' time='0.024'/>
+    <testcase classname='ClientTests.AuthenticatorTests' name='testChallengeMatchesLoginEntry' time='0.009'/>
+    <testcase classname='ClientTests.AuthenticatorTests' name='testChallengeMatchesSingleMalformedLoginEntry' time='0.013'/>
+  </testsuite>
+  <testsuite name='ClientTests.ClientTests' tests='4' failures='0'>
+    <testcase classname='ClientTests.ClientTests' name='testDesktopUserAgent' time='0.001'/>
+    <testcase classname='ClientTests.ClientTests' name='testDisallowLocalhostAliases' time='0.205'/>
+    <testcase classname='ClientTests.ClientTests' name='testSyncUA' time='0.001'/>
+    <testcase classname='ClientTests.ClientTests' name='testUserAgent' time='1.082'/>
+  </testsuite>
+  <testsuite name='ClientTests.CustomSearchEnginesTest' tests='3' failures='0'>
+    <testcase classname='ClientTests.CustomSearchEnginesTest' name='testaddSearchEngine' time='1.677'/>
+    <testcase classname='ClientTests.CustomSearchEnginesTest' name='testaddSearchEngineFailure' time='0.008'/>
+    <testcase classname='ClientTests.CustomSearchEnginesTest' name='testgetSearchTemplate' time='0.007'/>
+  </testsuite>
+  <testsuite name='ClientTests.FileAccessorTests' tests='1' failures='0'>
+    <testcase classname='ClientTests.FileAccessorTests' name='testFileAccessor' time='0.005'/>
+  </testsuite>
+  <testsuite name='ClientTests.FxADeepLinkingTests' tests='3' failures='0'>
+    <testcase classname='ClientTests.FxADeepLinkingTests' name='testDoesntOverrideServiceContext' time='0.012'/>
+    <testcase classname='ClientTests.FxADeepLinkingTests' name='testLaunchWithNilOptions' time='0.008'/>
+    <testcase classname='ClientTests.FxADeepLinkingTests' name='testLaunchWithOptions' time='0.007'/>
+  </testsuite>
+  <testsuite name='ClientTests.FxAPushMessageTest' tests='2' failures='0'>
+    <testcase classname='ClientTests.FxAPushMessageTest' name='testMessage_subscriptionDecryption' time='0.020'/>
+    <testcase classname='ClientTests.FxAPushMessageTest' name='testMessageHandler' time='0.021'/>
+  </testsuite>
+  <testsuite name='ClientTests.HomePageTests' tests='1' failures='0'>
+    <testcase classname='ClientTests.HomePageTests' name='testHomePageSettingForInternalURLs' time='0.002'/>
+  </testsuite>
+  <testsuite name='ClientTests.MenuTests' tests='30' failures='0'>
+    <testcase classname='ClientTests.MenuTests' name='testBookmarkItemsNotPresentInMenuConfigurationForHomePanels' time='0.033'/>
+    <testcase classname='ClientTests.MenuTests' name='testBookmarkItemsNotPresentInMenuConfigurationInTabTray' time='0.002'/>
+    <testcase classname='ClientTests.MenuTests' name='testFindInPageItemNotPresentInMenuConfigurationInHomePanels' time='0.001'/>
+    <testcase classname='ClientTests.MenuTests' name='testFindInPageItemNotPresentInMenuConfigurationInTabTray' time='0.001'/>
+    <testcase classname='ClientTests.MenuTests' name='testFindInPageItemPresentInMenuConfigurationInTab' time='0.006'/>
+    <testcase classname='ClientTests.MenuTests' name='testHideImagesMenuConfiguration' time='0.001'/>
+    <testcase classname='ClientTests.MenuTests' name='testHomePageInHomePanelsMenuConfiguration' time='0.001'/>
+    <testcase classname='ClientTests.MenuTests' name='testHomePageMenuConfiguration' time='0.001'/>
+    <testcase classname='ClientTests.MenuTests' name='testHomePageNotInMenuConfiguration' time='0.001'/>
+    <testcase classname='ClientTests.MenuTests' name='testHomePanelToolbarItemsNotPresentInMenuConfigurationInHomePanels' time='0.001'/>
+    <testcase classname='ClientTests.MenuTests' name='testHomePanelToolbarItemsPresentInMenuConfigurationInTab' time='0.002'/>
+    <testcase classname='ClientTests.MenuTests' name='testHomePanelToolbarItemsPresentInMenuConfigurationInTabTray' time='0.001'/>
+    <testcase classname='ClientTests.MenuTests' name='testMenuConfigurationForBookmarkedItemInTab' time='0.001'/>
+    <testcase classname='ClientTests.MenuTests' name='testMenuConfigurationForNonBookmarkedItemInTab' time='0.001'/>
+    <testcase classname='ClientTests.MenuTests' name='testMenuConfigurationForViewDesktopSiteItemInTab' time='0.001'/>
+    <testcase classname='ClientTests.MenuTests' name='testMenuConfigurationForViewMobileSiteItemInTab' time='0.001'/>
+    <testcase classname='ClientTests.MenuTests' name='testNewPrivateTabItemPresentInMenuConfigurationInHomePanels' time='0.001'/>
+    <testcase classname='ClientTests.MenuTests' name='testNewPrivateTabItemPresentInMenuConfigurationInTab' time='0.001'/>
+    <testcase classname='ClientTests.MenuTests' name='testNewPrivateTabItemPresentInMenuConfigurationInTabTray' time='0.001'/>
+    <testcase classname='ClientTests.MenuTests' name='testNewTabItemPresentInMenuConfigurationInHomePanels' time='0.001'/>
+    <testcase classname='ClientTests.MenuTests' name='testNewTabItemPresentInMenuConfigurationInTab' time='0.001'/>
+    <testcase classname='ClientTests.MenuTests' name='testNewTabItemPresentInMenuConfigurationInTabTray' time='0.001'/>
+    <testcase classname='ClientTests.MenuTests' name='testNoSetHomePageInHomePanelsMenuConfiguration' time='0.001'/>
+    <testcase classname='ClientTests.MenuTests' name='testSetHomePageMenuConfiguration' time='0.001'/>
+    <testcase classname='ClientTests.MenuTests' name='testSettingsItemNotPresentInMenuConfigurationInHomePanels' time='0.001'/>
+    <testcase classname='ClientTests.MenuTests' name='testSettingsItemNotPresentInMenuConfigurationInTabTray' time='0.001'/>
+    <testcase classname='ClientTests.MenuTests' name='testSettingsItemPresentInMenuConfigurationInTab' time='0.001'/>
+    <testcase classname='ClientTests.MenuTests' name='testShowImagesMenuConfiguration' time='0.001'/>
+    <testcase classname='ClientTests.MenuTests' name='testViewDesktopSiteItemsNotPresentInMenuConfigurationForHomePanels' time='0.001'/>
+    <testcase classname='ClientTests.MenuTests' name='testViewDesktopSiteItemsNotPresentInMenuConfigurationInTabTray' time='0.001'/>
+  </testsuite>
+  <testsuite name='ClientTests.PanelDataObserversTests' tests='1' failures='0'>
+    <testcase classname='ClientTests.PanelDataObserversTests' name='testActivityStreamDelegates' time='0.169'/>
+  </testsuite>
+  <testsuite name='ClientTests.PingCentreTests' tests='2' failures='0'>
+    <testcase classname='ClientTests.PingCentreTests' name='testSendBatch' time='0.011'/>
+    <testcase classname='ClientTests.PingCentreTests' name='testSendPing' time='0.002'/>
+  </testsuite>
+  <testsuite name='ClientTests.PrefsTests' tests='7' failures='0'>
+    <testcase classname='ClientTests.PrefsTests' name='testBoolForKey' time='0.003'/>
+    <testcase classname='ClientTests.PrefsTests' name='testClearPrefs' time='0.002'/>
+    <testcase classname='ClientTests.PrefsTests' name='testMockProfilePrefsClearAll' time='0.001'/>
+    <testcase classname='ClientTests.PrefsTests' name='testMockProfilePrefsKeys' time='0.001'/>
+    <testcase classname='ClientTests.PrefsTests' name='testMockProfilePrefsRoundtripsTimestamps' time='0.001'/>
+    <testcase classname='ClientTests.PrefsTests' name='testStringArrayForKey' time='0.002'/>
+    <testcase classname='ClientTests.PrefsTests' name='testStringForKey' time='0.002'/>
+  </testsuite>
+  <testsuite name='ClientTests.ProfileTest' tests='1' failures='0'>
+    <testcase classname='ClientTests.ProfileTest' name='testNewProfileClearsExistingAuthenticationInfo' time='0.026'/>
+  </testsuite>
+  <testsuite name='ClientTests.RelativeDatesTests' tests='1' failures='0'>
+    <testcase classname='ClientTests.RelativeDatesTests' name='testRelativeDates' time='0.004'/>
+  </testsuite>
+  <testsuite name='ClientTests.ResetTests' tests='1' failures='0'>
+    <testcase classname='ClientTests.ResetTests' name='testResetting' time='0.105'/>
+  </testsuite>
+  <testsuite name='ClientTests.SearchEnginesTests' tests='8' failures='0'>
+    <testcase classname='ClientTests.SearchEnginesTests' name='testAddingAndDeletingCustomEngines' time='0.024'/>
+    <testcase classname='ClientTests.SearchEnginesTests' name='testDefaultEngine' time='0.024'/>
+    <testcase classname='ClientTests.SearchEnginesTests' name='testDefaultEngineOnStartup' time='0.015'/>
+    <testcase classname='ClientTests.SearchEnginesTests' name='testDirectoriesForLanguageIdentifier' time='0.001'/>
+    <testcase classname='ClientTests.SearchEnginesTests' name='testIncludesExpectedEngines' time='0.015'/>
+    <testcase classname='ClientTests.SearchEnginesTests' name='testOrderedEngines' time='0.025'/>
+    <testcase classname='ClientTests.SearchEnginesTests' name='testQuickSearchEngines' time='0.026'/>
+    <testcase classname='ClientTests.SearchEnginesTests' name='testSearchSuggestionSettings' time='0.025'/>
+  </testsuite>
+  <testsuite name='ClientTests.SearchTests' tests='4' failures='0'>
+    <testcase classname='ClientTests.SearchTests' name='testExtractingOfSearchTermsFromURL' time='0.008'/>
+    <testcase classname='ClientTests.SearchTests' name='testParsing' time='0.002'/>
+    <testcase classname='ClientTests.SearchTests' name='testSuggestClient' time='0.062'/>
+    <testcase classname='ClientTests.SearchTests' name='testURIFixup' time='0.005'/>
+  </testsuite>
+  <testsuite name='ClientTests.StringExtensionsTests' tests='5' failures='0'>
+    <testcase classname='ClientTests.StringExtensionsTests' name='testEllipsize' time='0.001'/>
+    <testcase classname='ClientTests.StringExtensionsTests' name='testEndsWith' time='0.001'/>
+    <testcase classname='ClientTests.StringExtensionsTests' name='testStartsWith' time='0.001'/>
+    <testcase classname='ClientTests.StringExtensionsTests' name='testStringByTrimmingLeadingCharactersInSet' time='0.003'/>
+    <testcase classname='ClientTests.StringExtensionsTests' name='testStringSplitWithNewline' time='0.004'/>
+  </testsuite>
+  <testsuite name='ClientTests.SyncStatusResolverTests' tests='9' failures='0'>
+    <testcase classname='ClientTests.SyncStatusResolverTests' name='testAllCompleted' time='0.003'/>
+    <testcase classname='ClientTests.SyncStatusResolverTests' name='testAllCompletedExceptNotStartedBecauseNoAccount' time='0.003'/>
+    <testcase classname='ClientTests.SyncStatusResolverTests' name='testAllCompletedExceptNotStartedBecauseOffline' time='0.001'/>
+    <testcase classname='ClientTests.SyncStatusResolverTests' name='testAllCompletedExceptOneDisabledRemotely' time='0.003'/>
+    <testcase classname='ClientTests.SyncStatusResolverTests' name='testAllPartial' time='0.001'/>
+    <testcase classname='ClientTests.SyncStatusResolverTests' name='testBookmarkMergeError' time='0.001'/>
+    <testcase classname='ClientTests.SyncStatusResolverTests' name='testBufferInvalidError' time='0.001'/>
+    <testcase classname='ClientTests.SyncStatusResolverTests' name='testOfflineAndNoAccount' time='0.001'/>
+    <testcase classname='ClientTests.SyncStatusResolverTests' name='testRandomFailure' time='0.004'/>
+  </testsuite>
+  <testsuite name='ClientTests.TabManagerTests' tests='11' failures='0'>
+    <testcase classname='ClientTests.TabManagerTests' name='testAddTab' time='0.030'/>
+    <testcase classname='ClientTests.TabManagerTests' name='testDeleteFirstTab' time='0.075'/>
+    <testcase classname='ClientTests.TabManagerTests' name='testDeleteLastTab' time='0.070'/>
+    <testcase classname='ClientTests.TabManagerTests' name='testDeleteNonSelectedTab' time='0.032'/>
+    <testcase classname='ClientTests.TabManagerTests' name='testDeletePrivateTabsOnExit' time='0.100'/>
+    <testcase classname='ClientTests.TabManagerTests' name='testDidDeleteLastPrivateTab' time='0.036'/>
+    <testcase classname='ClientTests.TabManagerTests' name='testDidDeleteLastTab' time='0.032'/>
+    <testcase classname='ClientTests.TabManagerTests' name='testTabManagerCallsTabManagerStateDelegateOnStoreChangesWithNormalTabs' time='0.029'/>
+    <testcase classname='ClientTests.TabManagerTests' name='testTabManagerDoesNotCallTabManagerStateDelegateOnStoreChangesWithPrivateTabs' time='0.033'/>
+    <testcase classname='ClientTests.TabManagerTests' name='testTabsIndex' time='0.054'/>
+    <testcase classname='ClientTests.TabManagerTests' name='testTabsIndexClosingFirst' time='0.049'/>
+  </testsuite>
+  <testsuite name='ClientTests.TestBookmarks' tests='2' failures='0'>
+    <testcase classname='ClientTests.TestBookmarks' name='testBookmarks' time='0.129'/>
+    <testcase classname='ClientTests.TestBookmarks' name='testNewProfileClearsExistingAuthenticationInfo' time='0.018'/>
+  </testsuite>
+  <testsuite name='ClientTests.TestFavicons' tests='2' failures='0'>
+    <testcase classname='ClientTests.TestFavicons' name='testFaviconFetcherParse' time='5.397'/>
+    <testcase classname='ClientTests.TestFavicons' name='testNewProfileClearsExistingAuthenticationInfo' time='0.020'/>
+  </testsuite>
+  <testsuite name='ClientTests.TestHashExtensions' tests='2' failures='0'>
+    <testcase classname='ClientTests.TestHashExtensions' name='testSha1' time='0.001'/>
+    <testcase classname='ClientTests.TestHashExtensions' name='testSha256' time='0.001'/>
+  </testsuite>
+  <testsuite name='ClientTests.TestHistory' tests='7' failures='0'>
+    <testcase classname='ClientTests.TestHistory' name='testAboutUrls' time='0.022'/>
+    <testcase classname='ClientTests.TestHistory' name='testGetPerformance' time='0.440'/>
+    <testcase classname='ClientTests.TestHistory' name='testHistory' time='0.060'/>
+    <testcase classname='ClientTests.TestHistory' name='testInsertPerformance' time='0.808'/>
+    <testcase classname='ClientTests.TestHistory' name='testNewProfileClearsExistingAuthenticationInfo' time='0.019'/>
+    <testcase classname='ClientTests.TestHistory' name='testRandomThreading' time='0.166'/>
+    <testcase classname='ClientTests.TestHistory' name='testRandomThreading2' time='0.196'/>
+  </testsuite>
+  <testsuite name='ClientTests.UIImageViewExtensionsTests' tests='4' failures='0'>
+    <testcase classname='ClientTests.UIImageViewExtensionsTests' name='testAsyncSetIcon' time='2.037'/>
+    <testcase classname='ClientTests.UIImageViewExtensionsTests' name='testAsyncSetIconFail' time='2.031'/>
+    <testcase classname='ClientTests.UIImageViewExtensionsTests' name='testDefaultIcons' time='2.102'/>
+    <testcase classname='ClientTests.UIImageViewExtensionsTests' name='testsetIcon' time='0.005'/>
+  </testsuite>
+  <testsuite name='ClientTests.UIPasteboardExtensionsTests' tests='2' failures='0'>
+    <testcase classname='ClientTests.UIPasteboardExtensionsTests' name='testAddGIFImage' time='0.705'/>
+    <testcase classname='ClientTests.UIPasteboardExtensionsTests' name='testAddPNGImage' time='0.256'/>
+  </testsuite>
+  <testsuite name='ClientTests.WebServerTests' tests='2' failures='0'>
+    <testcase classname='ClientTests.WebServerTests' name='testWebServerIsRunning' time='0.001'/>
+    <testcase classname='ClientTests.WebServerTests' name='testWebServerIsServingRequests' time='0.015'/>
+  </testsuite>
+  <testsuite name='SyncTests.CryptoTests' tests='4' failures='0'>
+    <testcase classname='SyncTests.CryptoTests' name='testBadBase64' time='0.003'/>
+    <testcase classname='SyncTests.CryptoTests' name='testDecrypt' time='0.006'/>
+    <testcase classname='SyncTests.CryptoTests' name='testEncrypt' time='0.003'/>
+    <testcase classname='SyncTests.CryptoTests' name='testHMAC' time='0.002'/>
+  </testsuite>
+  <testsuite name='SyncTests.DownloadTests' tests='2' failures='0'>
+    <testcase classname='SyncTests.DownloadTests' name='testBasicDownload' time='0.093'/>
+    <testcase classname='SyncTests.DownloadTests' name='testDownloadBatches' time='0.251'/>
+  </testsuite>
+  <testsuite name='SyncTests.HistorySynchronizerTests' tests='2' failures='0'>
+    <testcase classname='SyncTests.HistorySynchronizerTests' name='testApplyRecords' time='0.011'/>
+    <testcase classname='SyncTests.HistorySynchronizerTests' name='testRecordSerialization' time='0.004'/>
+  </testsuite>
+  <testsuite name='SyncTests.InfoTests' tests='1' failures='0'>
+    <testcase classname='SyncTests.InfoTests' name='testSame' time='0.002'/>
+  </testsuite>
+  <testsuite name='SyncTests.MetaGlobalTests' tests='10' failures='0'>
+    <testcase classname='SyncTests.MetaGlobalTests' name='testCryptoKeysMissing' time='0.424'/>
+    <testcase classname='SyncTests.MetaGlobalTests' name='testEngineConfigurations' time='0.401'/>
+    <testcase classname='SyncTests.MetaGlobalTests' name='testFailingOptimisticStateMachine' time='0.040'/>
+    <testcase classname='SyncTests.MetaGlobalTests' name='testHappyOptimisticStateMachine' time='0.200'/>
+    <testcase classname='SyncTests.MetaGlobalTests' name='testMetaGlobalAndCryptoKeysFresh' time='0.199'/>
+    <testcase classname='SyncTests.MetaGlobalTests' name='testMetaGlobalMissing' time='0.255'/>
+    <testcase classname='SyncTests.MetaGlobalTests' name='testMetaGlobalModified' time='0.455'/>
+    <testcase classname='SyncTests.MetaGlobalTests' name='testMetaGlobalVersionTooNew' time='0.090'/>
+    <testcase classname='SyncTests.MetaGlobalTests' name='testMetaGlobalVersionTooOld' time='0.274'/>
+    <testcase classname='SyncTests.MetaGlobalTests' name='testUpdatedCryptoKeys' time='0.300'/>
+  </testsuite>
+  <testsuite name='SyncTests.MockSyncServerTests' tests='5' failures='0'>
+    <testcase classname='SyncTests.MockSyncServerTests' name='testDeleteSpec' time='0.002'/>
+    <testcase classname='SyncTests.MockSyncServerTests' name='testGet' time='0.232'/>
+    <testcase classname='SyncTests.MockSyncServerTests' name='testInfoCollections' time='0.051'/>
+    <testcase classname='SyncTests.MockSyncServerTests' name='testPut' time='0.050'/>
+    <testcase classname='SyncTests.MockSyncServerTests' name='testWipeStorage' time='0.047'/>
+  </testsuite>
+  <testsuite name='SyncTests.RecordTests' tests='24' failures='0'>
+    <testcase classname='SyncTests.RecordTests' name='testBookmarks' time='0.004'/>
+    <testcase classname='SyncTests.RecordTests' name='testDeletedRecord' time='0.001'/>
+    <testcase classname='SyncTests.RecordTests' name='testEncryptedClientRecord' time='0.004'/>
+    <testcase classname='SyncTests.RecordTests' name='testEnvelopeJSON' time='0.001'/>
+    <testcase classname='SyncTests.RecordTests' name='testEnvelopeNullTTL' time='0.001'/>
+    <testcase classname='SyncTests.RecordTests' name='testFolders' time='0.001'/>
+    <testcase classname='SyncTests.RecordTests' name='testGUIDs' time='0.001'/>
+    <testcase classname='SyncTests.RecordTests' name='testHistoryPayload' time='0.003'/>
+    <testcase classname='SyncTests.RecordTests' name='testHistoryPayloadWithNoTitle' time='0.003'/>
+    <testcase classname='SyncTests.RecordTests' name='testHistoryPayloadWithNoURL' time='0.001'/>
+    <testcase classname='SyncTests.RecordTests' name='testHistoryPayloadWithNullTitle' time='0.001'/>
+    <testcase classname='SyncTests.RecordTests' name='testInvalidRecordWithType' time='0.001'/>
+    <testcase classname='SyncTests.RecordTests' name='testLivemark' time='0.002'/>
+    <testcase classname='SyncTests.RecordTests' name='testLivemarkMissingFields' time='0.002'/>
+    <testcase classname='SyncTests.RecordTests' name='testLoginPayload' time='0.001'/>
+    <testcase classname='SyncTests.RecordTests' name='testMeta' time='0.009'/>
+    <testcase classname='SyncTests.RecordTests' name='testMobileBookmark' time='0.001'/>
+    <testcase classname='SyncTests.RecordTests' name='testMobileBookmarksFolder' time='0.001'/>
+    <testcase classname='SyncTests.RecordTests' name='testParsedNulls' time='0.001'/>
+    <testcase classname='SyncTests.RecordTests' name='testQuery' time='0.002'/>
+    <testcase classname='SyncTests.RecordTests' name='testRecord' time='0.006'/>
+    <testcase classname='SyncTests.RecordTests' name='testSeparators' time='0.001'/>
+    <testcase classname='SyncTests.RecordTests' name='testSwiftyJSONSerializingControlChars' time='0.001'/>
+    <testcase classname='SyncTests.RecordTests' name='testUnknownRecordType' time='0.001'/>
+  </testsuite>
+  <testsuite name='SyncTests.StateTests' tests='1' failures='0'>
+    <testcase classname='SyncTests.StateTests' name='testPickling' time='0.041'/>
+  </testsuite>
+  <testsuite name='SyncTests.StorageClientTests' tests='5' failures='0'>
+    <testcase classname='SyncTests.StorageClientTests' name='testNumeric' time='0.001'/>
+    <testcase classname='SyncTests.StorageClientTests' name='testOverSizeRecords' time='0.019'/>
+    <testcase classname='SyncTests.StorageClientTests' name='testPartialJSON' time='0.002'/>
+    <testcase classname='SyncTests.StorageClientTests' name='testPOSTResult' time='0.001'/>
+    <testcase classname='SyncTests.StorageClientTests' name='testResponseHeaders' time='0.002'/>
+  </testsuite>
+  <testsuite name='SyncTests.Sync15BatchClientTests' tests='10' failures='0'>
+    <testcase classname='SyncTests.Sync15BatchClientTests' name='testAddLargeRecordFails' time='0.014'/>
+    <testcase classname='SyncTests.Sync15BatchClientTests' name='testBackoffDuringBatchUploading' time='0.001'/>
+    <testcase classname='SyncTests.Sync15BatchClientTests' name='testBatchUploadWithPartialPayload' time='0.004'/>
+    <testcase classname='SyncTests.Sync15BatchClientTests' name='testBatchUploadWithSinglePayload' time='0.002'/>
+    <testcase classname='SyncTests.Sync15BatchClientTests' name='testBatchUploadWithUnevenPayloadsInBatch' time='0.002'/>
+    <testcase classname='SyncTests.Sync15BatchClientTests' name='testFailToSerializeRecord' time='0.001'/>
+    <testcase classname='SyncTests.Sync15BatchClientTests' name='testIfUnmodifiedSinceUpdatesForSinglePOSTs' time='0.002'/>
+    <testcase classname='SyncTests.Sync15BatchClientTests' name='testMultipleBatchUpload' time='0.007'/>
+    <testcase classname='SyncTests.Sync15BatchClientTests' name='testUploadBatchUnsupportedBatching' time='0.002'/>
+    <testcase classname='SyncTests.Sync15BatchClientTests' name='testUploadRegularSingleBatch' time='0.003'/>
+  </testsuite>
+  <testsuite name='SyncTests.SyncTelemetryTests' tests='3' failures='0'>
+    <testcase classname='SyncTests.SyncTelemetryTests' name='testApplyIncomingRecordsReportsDownloadStats' time='0.003'/>
+    <testcase classname='SyncTests.SyncTelemetryTests' name='testApplyIncomingRecordsToStorageReportsDownloadStats' time='0.003'/>
+    <testcase classname='SyncTests.SyncTelemetryTests' name='testUploadRecordsReportsUploadStats' time='0.005'/>
+  </testsuite>
+  <testsuite name='SyncTests.TabsPayloadTests' tests='6' failures='0'>
+    <testcase classname='SyncTests.TabsPayloadTests' name='testFromInvalidJSON' time='0.001'/>
+    <testcase classname='SyncTests.TabsPayloadTests' name='testFromJSON' time='0.001'/>
+    <testcase classname='SyncTests.TabsPayloadTests' name='testFromJSONWithInvalidRecord' time='0.001'/>
+    <testcase classname='SyncTests.TabsPayloadTests' name='testTabWithBadTabLastUsed' time='0.004'/>
+    <testcase classname='SyncTests.TabsPayloadTests' name='testTabWithBadTabs' time='0.002'/>
+    <testcase classname='SyncTests.TabsPayloadTests' name='testTabWithCorrectTabLastUsed' time='0.001'/>
+  </testsuite>
+  <testsuite name='SyncTests.TestBookmarkModel' tests='5' failures='0'>
+    <testcase classname='SyncTests.TestBookmarkModel' name='testBookmarkEditableIfNeverSyncedAndEmptyBuffer' time='0.051'/>
+    <testcase classname='SyncTests.TestBookmarkModel' name='testBookmarkEditableIfNeverSyncedWithBufferedChanges' time='0.036'/>
+    <testcase classname='SyncTests.TestBookmarkModel' name='testBookmarksEditableWithEmptyBufferAndRemoteBookmark' time='0.043'/>
+    <testcase classname='SyncTests.TestBookmarkModel' name='testBookmarksNotEditableForUnmergedChanges' time='0.039'/>
+    <testcase classname='SyncTests.TestBookmarkModel' name='testLocalBookmarksEditableWhileHavingUnmergedChangesAndEmptyMirror' time='0.037'/>
+  </testsuite>
+  <testsuite name='SyncTests.TestBookmarkTreeMerging' tests='10' failures='0'>
+    <testcase classname='SyncTests.TestBookmarkTreeMerging' name='testApplyingTwoEmptyFoldersDoesntSmush' time='0.095'/>
+    <testcase classname='SyncTests.TestBookmarkTreeMerging' name='testApplyingTwoEmptyFoldersMatchesOnlyOne' time='0.082'/>
+    <testcase classname='SyncTests.TestBookmarkTreeMerging' name='testComplexMoveWithAdditions' time='0.072'/>
+    <testcase classname='SyncTests.TestBookmarkTreeMerging' name='testComplexOrphaning' time='0.077'/>
+    <testcase classname='SyncTests.TestBookmarkTreeMerging' name='testLocalRecordsKeepTheirFavicon' time='0.059'/>
+    <testcase classname='SyncTests.TestBookmarkTreeMerging' name='testLocalTreeAssumption' time='0.031'/>
+    <testcase classname='SyncTests.TestBookmarkTreeMerging' name='testMergingEmpty' time='0.009'/>
+    <testcase classname='SyncTests.TestBookmarkTreeMerging' name='testMergingOnlyLocalRoots' time='0.015'/>
+    <testcase classname='SyncTests.TestBookmarkTreeMerging' name='testMergingStorageLocalRootsEmptyServer' time='0.065'/>
+    <testcase classname='SyncTests.TestBookmarkTreeMerging' name='testRemoteValueOnlyChange' time='0.096'/>
+  </testsuite>
+  <testsuite name='SyncTests.TestBookmarksRepairRequestor' tests='8' failures='0'>
+    <testcase classname='SyncTests.TestBookmarksRepairRequestor' name='testAlreadyRepairingContinue' time='0.020'/>
+    <testcase classname='SyncTests.TestBookmarksRepairRequestor' name='testClientVanishes' time='0.018'/>
+    <testcase classname='SyncTests.TestBookmarksRepairRequestor' name='testLatestClientUsed' time='0.006'/>
+    <testcase classname='SyncTests.TestBookmarksRepairRequestor' name='testMultiClients' time='0.015'/>
+    <testcase classname='SyncTests.TestBookmarksRepairRequestor' name='testNoClients' time='0.004'/>
+    <testcase classname='SyncTests.TestBookmarksRepairRequestor' name='testOneClientNoResponse' time='0.015'/>
+    <testcase classname='SyncTests.TestBookmarksRepairRequestor' name='testOneClientTimeout' time='0.012'/>
+    <testcase classname='SyncTests.TestBookmarksRepairRequestor' name='testSyncEventsPickledInPrefs' time='0.003'/>
+  </testsuite>
+  <testsuite name='SyncTests.TestMergedTree' tests='1' failures='0'>
+    <testcase classname='SyncTests.TestMergedTree' name='testInitialState' time='0.001'/>
+  </testsuite>
+  <testsuite name='SharedTests.ArrayExtensionTests' tests='2' failures='0'>
+    <testcase classname='SharedTests.ArrayExtensionTests' name='testUnion' time='0.003'/>
+    <testcase classname='SharedTests.ArrayExtensionTests' name='testUnique' time='0.001'/>
+  </testsuite>
+  <testsuite name='SharedTests.AsyncReducerTests' tests='6' failures='0'>
+    <testcase classname='SharedTests.AsyncReducerTests' name='testAccumulation' time='0.002'/>
+    <testcase classname='SharedTests.AsyncReducerTests' name='testFailingAppend' time='0.102'/>
+    <testcase classname='SharedTests.AsyncReducerTests' name='testFailingCombine' time='0.001'/>
+    <testcase classname='SharedTests.AsyncReducerTests' name='testSimpleBehaviour' time='0.001'/>
+    <testcase classname='SharedTests.AsyncReducerTests' name='testWaitingFillerAppendingBehaviour' time='0.530'/>
+    <testcase classname='SharedTests.AsyncReducerTests' name='testWaitingFillerBehaviour' time='0.514'/>
+  </testsuite>
+  <testsuite name='SharedTests.AuthenticationKeychainInfoTests' tests='2' failures='0'>
+    <testcase classname='SharedTests.AuthenticationKeychainInfoTests' name='testEncodingAndDecoding' time='0.007'/>
+    <testcase classname='SharedTests.AuthenticationKeychainInfoTests' name='testNilIntervalsArentZero' time='0.007'/>
+  </testsuite>
+  <testsuite name='SharedTests.DeferredTests' tests='5' failures='0'>
+    <testcase classname='SharedTests.DeferredTests' name='testDeferred' time='0.001'/>
+    <testcase classname='SharedTests.DeferredTests' name='testFailAccumulate' time='0.001'/>
+    <testcase classname='SharedTests.DeferredTests' name='testMultipleUponBlocks' time='0.001'/>
+    <testcase classname='SharedTests.DeferredTests' name='testOperators' time='0.001'/>
+    <testcase classname='SharedTests.DeferredTests' name='testPassAccumulate' time='0.001'/>
+  </testsuite>
+  <testsuite name='SharedTests.FeatureSwitchTests' tests='10' failures='0'>
+    <testcase classname='SharedTests.FeatureSwitchTests' name='test0Percent' time='0.100'/>
+    <testcase classname='SharedTests.FeatureSwitchTests' name='test100Percent' time='0.097'/>
+    <testcase classname='SharedTests.FeatureSwitchTests' name='test30Percent' time='0.090'/>
+    <testcase classname='SharedTests.FeatureSwitchTests' name='test50Percent' time='0.091'/>
+    <testcase classname='SharedTests.FeatureSwitchTests' name='testAppConstantsWin' time='0.001'/>
+    <testcase classname='SharedTests.FeatureSwitchTests' name='testConsistentWhenChangingPercentage' time='0.002'/>
+    <testcase classname='SharedTests.FeatureSwitchTests' name='testForceDisabled' time='0.001'/>
+    <testcase classname='SharedTests.FeatureSwitchTests' name='testPerformance' time='2.598'/>
+    <testcase classname='SharedTests.FeatureSwitchTests' name='testPersistent' time='0.001'/>
+    <testcase classname='SharedTests.FeatureSwitchTests' name='testUserEnabled' time='0.001'/>
+  </testsuite>
+  <testsuite name='SharedTests.HexExtensionsTests' tests='3' failures='0'>
+    <testcase classname='SharedTests.HexExtensionsTests' name='testHexDecodedData' time='0.002'/>
+    <testcase classname='SharedTests.HexExtensionsTests' name='testHexDecodedDataWithInvalidInput' time='0.001'/>
+    <testcase classname='SharedTests.HexExtensionsTests' name='testHexEncodedString' time='0.001'/>
+  </testsuite>
+  <testsuite name='SharedTests.NSMutableAttributedStringExtensionsTests' tests='3' failures='0'>
+    <testcase classname='SharedTests.NSMutableAttributedStringExtensionsTests' name='testColorsSubstring' time='0.001'/>
+    <testcase classname='SharedTests.NSMutableAttributedStringExtensionsTests' name='testDoesNothingWhenSubstringNotFound' time='0.001'/>
+    <testcase classname='SharedTests.NSMutableAttributedStringExtensionsTests' name='testDoesNothingWithEmptySubstring' time='0.001'/>
+  </testsuite>
+  <testsuite name='SharedTests.NSURLExtensionsTests' tests='42' failures='0'>
+    <testcase classname='SharedTests.NSURLExtensionsTests' name='testBaseDomainForExceptionDomain' time='0.001'/>
+    <testcase classname='SharedTests.NSURLExtensionsTests' name='testBaseDomainForExceptionDomainWithAdditionalSubdomain' time='0.001'/>
+    <testcase classname='SharedTests.NSURLExtensionsTests' name='testBaseDomainForWildcardDomain' time='0.001'/>
+    <testcase classname='SharedTests.NSURLExtensionsTests' name='testBaseDomainForWildcardDomainWithAdditionalSubdomain' time='0.001'/>
+    <testcase classname='SharedTests.NSURLExtensionsTests' name='testBugzillaURLDomain' time='0.001'/>
+    <testcase classname='SharedTests.NSURLExtensionsTests' name='testCanadaComputers' time='0.001'/>
+    <testcase classname='SharedTests.NSURLExtensionsTests' name='testdecodeReaderModeURL' time='0.003'/>
+    <testcase classname='SharedTests.NSURLExtensionsTests' name='testdisplayURL' time='0.001'/>
+    <testcase classname='SharedTests.NSURLExtensionsTests' name='testdomainURL' time='0.002'/>
+    <testcase classname='SharedTests.NSURLExtensionsTests' name='testencodeReaderModeURL' time='0.001'/>
+    <testcase classname='SharedTests.NSURLExtensionsTests' name='testExceptionDomain' time='0.001'/>
+    <testcase classname='SharedTests.NSURLExtensionsTests' name='testgetQuery' time='0.001'/>
+    <testcase classname='SharedTests.NSURLExtensionsTests' name='testhavingRemovedAuthorisationComponents' time='0.001'/>
+    <testcase classname='SharedTests.NSURLExtensionsTests' name='testhostPort' time='0.001'/>
+    <testcase classname='SharedTests.NSURLExtensionsTests' name='testhostSLD' time='0.001'/>
+    <testcase classname='SharedTests.NSURLExtensionsTests' name='testIPv6Domain' time='0.001'/>
+    <testcase classname='SharedTests.NSURLExtensionsTests' name='testisAboutHomeURL' time='0.001'/>
+    <testcase classname='SharedTests.NSURLExtensionsTests' name='testisAboutURL' time='0.001'/>
+    <testcase classname='SharedTests.NSURLExtensionsTests' name='testisErrorPage' time='0.001'/>
+    <testcase classname='SharedTests.NSURLExtensionsTests' name='testisLocal' time='0.001'/>
+    <testcase classname='SharedTests.NSURLExtensionsTests' name='testisReaderModeURL' time='0.001'/>
+    <testcase classname='SharedTests.NSURLExtensionsTests' name='testisWebPage' time='0.001'/>
+    <testcase classname='SharedTests.NSURLExtensionsTests' name='testKeepsAboutSchemeInURL' time='0.001'/>
+    <testcase classname='SharedTests.NSURLExtensionsTests' name='testKeepsHTTPSAndRemovesTrailingSlashInURL' time='0.001'/>
+    <testcase classname='SharedTests.NSURLExtensionsTests' name='testKeepsHTTPSAndTrailingSlashInURL' time='0.000'/>
+    <testcase classname='SharedTests.NSURLExtensionsTests' name='testKeepsHTTPSInURL' time='0.001'/>
+    <testcase classname='SharedTests.NSURLExtensionsTests' name='testMultipleSuffixesInsideURL' time='0.001'/>
+    <testcase classname='SharedTests.NSURLExtensionsTests' name='testNormalBaseDomainWithManySubdomains' time='0.001'/>
+    <testcase classname='SharedTests.NSURLExtensionsTests' name='testNormalBaseDomainWithSingleSubdomain' time='0.001'/>
+    <testcase classname='SharedTests.NSURLExtensionsTests' name='testNormalBaseSubdomain' time='0.001'/>
+    <testcase classname='SharedTests.NSURLExtensionsTests' name='testNormalBaseSubdomainWithAdditionalSubdomain' time='0.005'/>
+    <testcase classname='SharedTests.NSURLExtensionsTests' name='testnormalizedHostAndPath' time='0.001'/>
+    <testcase classname='SharedTests.NSURLExtensionsTests' name='testorigin' time='0.001'/>
+    <testcase classname='SharedTests.NSURLExtensionsTests' name='testoriginalURLFromErrorURL' time='0.001'/>
+    <testcase classname='SharedTests.NSURLExtensionsTests' name='testRemovesHTTPAndTrailingSlashFromURL' time='0.001'/>
+    <testcase classname='SharedTests.NSURLExtensionsTests' name='testRemovesHTTPButNotTrailingSlashFromURL' time='0.001'/>
+    <testcase classname='SharedTests.NSURLExtensionsTests' name='testRemovesHTTPFromURL' time='0.001'/>
+    <testcase classname='SharedTests.NSURLExtensionsTests' name='testschemeIsValid' time='0.001'/>
+    <testcase classname='SharedTests.NSURLExtensionsTests' name='testWildCardDomainWithManySubdomains' time='0.001'/>
+    <testcase classname='SharedTests.NSURLExtensionsTests' name='testWildCardDomainWithSingleSubdomain' time='0.000'/>
+    <testcase classname='SharedTests.NSURLExtensionsTests' name='testWithQueryParam' time='0.001'/>
+    <testcase classname='SharedTests.NSURLExtensionsTests' name='testwithQueryParams' time='0.001'/>
+  </testsuite>
+  <testsuite name='SharedTests.PhoneNumberFormatterTests' tests='8' failures='0'>
+    <testcase classname='SharedTests.PhoneNumberFormatterTests' name='testFallsBackToSpecifiedLocaleForGuessingCountryCode' time='0.003'/>
+    <testcase classname='SharedTests.PhoneNumberFormatterTests' name='testFormatsNumber' time='0.001'/>
+    <testcase classname='SharedTests.PhoneNumberFormatterTests' name='testReturnsInputStringWhenFormattingFails' time='0.001'/>
+    <testcase classname='SharedTests.PhoneNumberFormatterTests' name='testReturnsInputStringWhenParsingFails' time='0.001'/>
+    <testcase classname='SharedTests.PhoneNumberFormatterTests' name='testReturnsInputStringWhenValidatingFails' time='0.001'/>
+    <testcase classname='SharedTests.PhoneNumberFormatterTests' name='testSelectsInternationalFormatWithCountryCode' time='0.001'/>
+    <testcase classname='SharedTests.PhoneNumberFormatterTests' name='testSelectsNationalFormatWithoutCountryCode' time='0.001'/>
+    <testcase classname='SharedTests.PhoneNumberFormatterTests' name='testUsesCarrierForGuessingCountryCode' time='0.001'/>
+  </testsuite>
+  <testsuite name='SharedTests.ResultTests' tests='1' failures='0'>
+    <testcase classname='SharedTests.ResultTests' name='testResult' time='0.001'/>
+  </testsuite>
+  <testsuite name='SharedTests.RollingFileLoggerTests' tests='3' failures='0'>
+    <testcase classname='SharedTests.RollingFileLoggerTests' name='testNewLogCreatesLogFileWithTimestamp' time='0.009'/>
+    <testcase classname='SharedTests.RollingFileLoggerTests' name='testNewLogDeletesOldestLogFileToMakeRoomForNewFile' time='0.034'/>
+    <testcase classname='SharedTests.RollingFileLoggerTests' name='testNewLogDeletesPreviousLogIfItsTooLarge' time='0.014'/>
+  </testsuite>
+  <testsuite name='SharedTests.SupportUtilsTests' tests='1' failures='0'>
+    <testcase classname='SharedTests.SupportUtilsTests' name='testURLForTopic' time='0.001'/>
+  </testsuite>
+  <testsuite name='SharedTests.UtilsTests' tests='5' failures='0'>
+    <testcase classname='SharedTests.UtilsTests' name='testChunk' time='0.002'/>
+    <testcase classname='SharedTests.UtilsTests' name='testMapUtils' time='0.001'/>
+    <testcase classname='SharedTests.UtilsTests' name='testOptArrayEqual' time='0.001'/>
+    <testcase classname='SharedTests.UtilsTests' name='testOptFilter' time='0.001'/>
+    <testcase classname='SharedTests.UtilsTests' name='testParseTimestamps' time='0.001'/>
+  </testsuite>
+  <testsuite name='FxATests' tests='1' failures='0'>
+    <testcase classname='FxATests' name='testPerformanceExample' time='0.272'/>
+  </testsuite>
+  <testsuite name='TelemetryTests.EventTests' tests='4' failures='0'>
+    <testcase classname='TelemetryTests.EventTests' name='testEventValidation' time='0.006'/>
+    <testcase classname='TelemetryTests.EventTests' name='testIdentifierStringValidation' time='0.001'/>
+    <testcase classname='TelemetryTests.EventTests' name='testPickling' time='0.001'/>
+    <testcase classname='TelemetryTests.EventTests' name='testUnpickling' time='0.002'/>
+  </testsuite>
+  <testsuite name='AccountTests.FirefoxAccountTests' tests='1' failures='0'>
+    <testcase classname='AccountTests.FirefoxAccountTests' name='testSerialization' time='0.027'/>
+  </testsuite>
+  <testsuite name='AccountTests.FxAClient10Tests' tests='7' failures='0'>
+    <testcase classname='AccountTests.FxAClient10Tests' name='testClientState' time='0.003'/>
+    <testcase classname='AccountTests.FxAClient10Tests' name='testErrorOutput' time='0.006'/>
+    <testcase classname='AccountTests.FxAClient10Tests' name='testKeysSuccess' time='0.005'/>
+    <testcase classname='AccountTests.FxAClient10Tests' name='testLoginFailure' time='0.003'/>
+    <testcase classname='AccountTests.FxAClient10Tests' name='testLoginSuccess' time='0.002'/>
+    <testcase classname='AccountTests.FxAClient10Tests' name='testSignSuccess' time='0.002'/>
+    <testcase classname='AccountTests.FxAClient10Tests' name='testUnwrapKey' time='0.001'/>
+  </testsuite>
+  <testsuite name='AccountTests.FxALoginStateMachineTests' tests='10' failures='0'>
+    <testcase classname='AccountTests.FxALoginStateMachineTests' name='testAdvanceFromCohabitingAfterVerifiedDuringOutage' time='0.046'/>
+    <testcase classname='AccountTests.FxALoginStateMachineTests' name='testAdvanceFromCohabitingAfterVerifiedWithoutNetwork' time='0.009'/>
+    <testcase classname='AccountTests.FxALoginStateMachineTests' name='testAdvanceFromEngagedAfterVerified' time='0.062'/>
+    <testcase classname='AccountTests.FxALoginStateMachineTests' name='testAdvanceFromEngagedAfterVerifiedWithoutNetwork' time='0.003'/>
+    <testcase classname='AccountTests.FxALoginStateMachineTests' name='testAdvanceFromEngagedBeforeVerified' time='0.002'/>
+    <testcase classname='AccountTests.FxALoginStateMachineTests' name='testAdvanceFromMarried' time='0.007'/>
+    <testcase classname='AccountTests.FxALoginStateMachineTests' name='testAdvanceFromMarriedAfterPasswordChange' time='0.032'/>
+    <testcase classname='AccountTests.FxALoginStateMachineTests' name='testAdvanceFromMarriedWithExpiredCertificate' time='0.018'/>
+    <testcase classname='AccountTests.FxALoginStateMachineTests' name='testAdvanceFromMarriedWithExpiredKeyPair' time='0.009'/>
+    <testcase classname='AccountTests.FxALoginStateMachineTests' name='testAdvanceWhenInteractionRequired' time='0.002'/>
+  </testsuite>
+  <testsuite name='AccountTests.FxAStateTests' tests='1' failures='0'>
+    <testcase classname='AccountTests.FxAStateTests' name='testSerialization' time='0.047'/>
+  </testsuite>
+  <testsuite name='AccountTests.HawkHelperTests' tests='5' failures='0'>
+    <testcase classname='AccountTests.HawkHelperTests' name='testGetBaseContentType' time='0.001'/>
+    <testcase classname='AccountTests.HawkHelperTests' name='testSpecRequestString' time='0.008'/>
+    <testcase classname='AccountTests.HawkHelperTests' name='testSpecSignatureExample' time='0.001'/>
+    <testcase classname='AccountTests.HawkHelperTests' name='testSpecWithoutPayloadExample' time='0.001'/>
+    <testcase classname='AccountTests.HawkHelperTests' name='testSpecWithPayloadExample' time='0.001'/>
+  </testsuite>
+  <testsuite name='AccountTests.LivePushClientTests' tests='2' failures='0'>
+    <testcase classname='AccountTests.LivePushClientTests' name='testClientRegistration' time='3.170'/>
+    <testcase classname='AccountTests.LivePushClientTests' name='testClientUpdate' time='0.783'/>
+  </testsuite>
+  <testsuite name='AccountTests.PushCryptoTests' tests='8' failures='0'>
+    <testcase classname='AccountTests.PushCryptoTests' name='testDecrypt_aes128gcm' time='0.005'/>
+    <testcase classname='AccountTests.PushCryptoTests' name='testDecrypt_aesgcm' time='0.003'/>
+    <testcase classname='AccountTests.PushCryptoTests' name='testFail_aes128gcm' time='0.001'/>
+    <testcase classname='AccountTests.PushCryptoTests' name='testFail_aesgcm' time='0.001'/>
+    <testcase classname='AccountTests.PushCryptoTests' name='testKeyGeneration' time='0.001'/>
+    <testcase classname='AccountTests.PushCryptoTests' name='testRoundTrip_aes128gcm' time='0.002'/>
+    <testcase classname='AccountTests.PushCryptoTests' name='testRoundtrip_base64urlSafe' time='0.001'/>
+    <testcase classname='AccountTests.PushCryptoTests' name='testRoundtrip_base64urlSafe_withSpecialChars' time='0.001'/>
+  </testsuite>
+  <testsuite name='AccountTests.TokenServerClientTests' tests='4' failures='0'>
+    <testcase classname='AccountTests.TokenServerClientTests' name='testAudienceForEndpoint' time='0.001'/>
+    <testcase classname='AccountTests.TokenServerClientTests' name='testErrorOutput' time='0.001'/>
+    <testcase classname='AccountTests.TokenServerClientTests' name='testTokenFailure' time='0.002'/>
+    <testcase classname='AccountTests.TokenServerClientTests' name='testTokenSuccess' time='0.002'/>
+  </testsuite>
+  <testsuite name='FirefoxFastlaneTests.FirefoxFastlaneTests' tests='2' failures='1'>
+    <testcase classname='FirefoxFastlaneTests.FirefoxFastlaneTests' name='testExample'>
+      <failure message='XCTAssertTrue failed - '>FirefoxFastlaneTests/FirefoxFastlaneTests.swift:26</failure>
+    </testcase>
+    <testcase classname='FirefoxFastlaneTests.FirefoxFastlaneTests' name='testPerformanceExample' time='0.262'/>
+  </testsuite>
+</testsuites>

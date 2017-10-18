@@ -44,7 +44,7 @@ platform :ios do
         silent: false,
         output_directory: "./Export"
       )
-
+      scan
       testflight(
         username: "your@email.com",
         app_identifier: "com.doronkatz.firefox",
