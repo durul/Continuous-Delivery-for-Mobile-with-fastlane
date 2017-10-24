@@ -32,6 +32,18 @@ platform :ios do
     frameit(white: true, path: './fastlane/screenshots')
   end
 
+  lane :build do
+    match(git_url: "git@bitbucket.org:doron_katz/my-fastlane-keys.git",
+        type: "development",
+        app_identifier: "com.doronkatz.firefox")
+    gym(scheme: "Fennec",
+          output_name:"firefox.ipa",
+          configuration: "development",
+          export_method: "development",
+          silent: false,
+          output_directory: "./Export"
+        )
+  end
   lane :beta do
     register_devices(devices_file: "devices.txt")
     match(git_url: "git@bitbucket.org:doron_katz/my-fastlane-keys.git",
