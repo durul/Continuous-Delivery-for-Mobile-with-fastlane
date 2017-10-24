@@ -35,7 +35,6 @@ platform :ios do
   lane :build do
     gym(scheme: "Fennec",
           output_name:"firefox.ipa",
-          configuration: "development",
           export_method: "development",
           silent: false,
           output_directory: "./Export"
@@ -48,7 +47,6 @@ platform :ios do
       app_identifier: "com.doronkatz.firefox")
       gym(scheme: "Fennec",
         output_name:"firefox.ipa",
-        configuration: "development",
         export_method: "development",
         silent: false,
         output_directory: "./Export"
