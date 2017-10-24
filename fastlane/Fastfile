@@ -33,9 +33,6 @@ platform :ios do
   end
 
   lane :build do
-    match(git_url: "git@bitbucket.org:doron_katz/my-fastlane-keys.git",
-        type: "development",
-        app_identifier: "com.doronkatz.firefox")
     gym(scheme: "Fennec",
           output_name:"firefox.ipa",
           configuration: "development",
