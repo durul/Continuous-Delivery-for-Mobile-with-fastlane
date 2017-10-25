@@ -68,7 +68,7 @@ platform :ios do
     # You can also use other beta testing services here (run `fastlane actions`)
   end
 
-  lane :crashlytics do
+  lane :analytics do
     crashlytics(
       crashlytics_path: "./Pods/Crashlytics/", # path to your Crashlytics submit binary.
       api_token: "xxx",
