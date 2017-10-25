@@ -36,9 +36,8 @@ platform :ios do
     gym(scheme: "Fennec",
           output_name:"firefox.ipa",
           export_method: "development",
-          silent: true,
+          scheme: "Fennec",
           clean: false,
-          sdk: "10.0",
           output_directory: "./Export"
         )
   end
