@@ -17,18 +17,26 @@ default_platform :ios
 
 platform :ios do
   before_all do
-    # ENV["SLACK_URL"] = "https://hooks.slack.com/services/..."
-    
+    update_fastlane
     carthage(
-      command: options[:update] ? "update" : "bootstrap",
+      command: "update",
       platform: "iOS",
       use_binaries: false
     )
+    match(git_url: "git@bitbucket.org:doron_katz/my-fastlane-keys.git",
+      type: "development",
+      app_identifier: "com.doronkatz.firefox")
   end
 
   desc "Runs all the tests"
   lane :test do
     scan
+  end
+
+  # Output just the recent set of commit messages 
+  lane :changelog do
+    changelog = changelog_from_git_commits(pretty: ‘%h %s’)
+    desc changelog
   end
 
   lane :gen_screenshots do
@@ -38,18 +46,17 @@ platform :ios do
 
   lane :build do
     gym(scheme: "Fennec",
-          output_name:"firefox.ipa",
-          configuration: "development",
-          export_method: "development",
-          silent: false,
-          output_directory: "./Export"
+      output_name:"firefox.ipa",
+      configuration: "development",
+      export_method: "development",
+      silent: false,
+      output_directory: "./Export"
         )
   end
   lane :beta do
+    ensure_git_status_clean
+    git_pull
     register_devices(devices_file: "devices.txt")
-    match(git_url: "git@bitbucket.org:doron_katz/my-fastlane-keys.git",
-      type: "development",
-      app_identifier: "com.doronkatz.firefox")
       gym(scheme: "Fennec",
         output_name:"firefox.ipa",
         configuration: "development",
@@ -58,16 +65,15 @@ platform :ios do
         output_directory: "./Export"
       )
       scan
+      changelog = changelog_from_git_commits(pretty: ‘%h %s’)
       testflight(
         username: "your@email.com",
         app_identifier: "com.doronkatz.firefox",
-        beta_app_description: "This is a new build and should be dynamic, from prompt",
+        beta_app_description: changelog,
         beta_app_feedback_email: "feedback@firefoxapp.com",
         itc_provider: "abcde12345" # pass a specific value to the iTMSTransporter -itc_provider option
       )
 
-    # sh "your_script.sh"
-    # You can also use other beta testing services here (run `fastlane actions`)
   end
 
   lane :crashlytics do
