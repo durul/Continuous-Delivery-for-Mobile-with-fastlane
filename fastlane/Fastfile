@@ -18,11 +18,11 @@ default_platform :ios
 platform :ios do
   before_all do
     update_fastlane
-    carthage(
-      command: "update",
-      platform: "iOS",
-      use_binaries: false
-    )
+    # carthage(
+    #   command: "update",
+    #   platform: "iOS",
+    #   use_binaries: false
+    # )
     match(git_url: "git@bitbucket.org:doron_katz/my-fastlane-keys.git",
       type: "development",
       app_identifier: "com.doronkatz.firefox")
