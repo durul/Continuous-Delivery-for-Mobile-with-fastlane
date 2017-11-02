@@ -47,34 +47,34 @@ platform :ios do
         )
   end
   lane :beta do
-    # ensure_git_status_clean
-    # git_pull
-    # register_devices(devices_file: "devices.txt")
-    #   gym(scheme: "Fennec",
-    #     output_name:"firefox.ipa",
-    #     export_method: "ad-hoc",
-    #     silent: false,
-    #     output_directory: "./Export"
-    #   )
-    #   scan
-    #   changelog = changelog_from_git_commits(pretty: '%h %s')
-    #   testflight(
-    #     username: "doronkatz@mac.com",
-    #     app_identifier: "com.doronkatz.firefox",
-    #     beta_app_description: changelog,
-    #     beta_app_feedback_email: "feedback@firefoxapp.com",
-    #     itc_provider: "abcde12345" # pass a specific value to the iTMSTransporter -itc_provider option
-    #   )
-      commit_version_bump(
-        message: 'Build Version Bump by fastlane',
-        xcodeproj: "Client.xcodeproj",
-        force: true
+    ensure_git_status_clean
+    git_pull
+    register_devices(devices_file: "devices.txt")
+    gym(scheme: "Fennec",
+        output_name:"firefox.ipa",
+        export_method: "ad-hoc",
+        silent: false,
+        output_directory: "./Export"
       )
-
-      increment_build_number(xcodeproj: "Client.xcodeproj")
-
-
-
+    scan
+    changelog = changelog_from_git_commits(pretty: '%h %s')
+    testflight(
+      username: "doronkatz@mac.com",
+      app_identifier: "com.doronkatz.firefox",
+      beta_app_description: changelog,
+      beta_app_feedback_email: "feedback@firefoxapp.com",
+      itc_provider: "abcde12345" # pass a specific value to the iTMSTransporter -itc_provider option
+    )
+      
+    increment_build_number(xcodeproj: "Client.xcodeproj")
+    commit_version_bump(
+      message: 'Build Version Bump by fastlane',
+      xcodeproj: "Client.xcodeproj",
+      force: true
+    )
+    add_git_tag(grouping: "testing")
+    push_to_git_remote
+    push_git_tags
   end
 
   lane :release do
