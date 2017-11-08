@@ -18,11 +18,11 @@ default_platform :ios
 platform :ios do
   before_all do
     update_fastlane
-    # carthage(
-    #   command: "bootstrap",
-    #   platform: "iOS",
-    #   use_binaries: false
-    # )
+    carthage(
+      command: "bootstrap",
+      platform: "iOS",
+      use_binaries: false
+    )
     match(git_url: "git@bitbucket.org:doron_katz/my-fastlane-keys.git",
       type: "adhoc",
       app_identifier: "com.doronkatz.firefox")
@@ -31,6 +31,7 @@ platform :ios do
   desc "Runs all the tests"
   lane :test do
     scan
+    post_to_slack(message: "Successfuly ran all the unit tests", success: true, payload: {})
   end
 
   lane :gen_screenshots do
@@ -45,6 +46,8 @@ platform :ios do
       export_method: "ad-hoc",
       output_directory: "./Export"
         )
+    post_to_slack(message: "Successfuly completed a new build", success: true, payload: {})
+
   end
   lane :beta do
     ensure_git_status_clean
@@ -64,7 +67,7 @@ platform :ios do
       beta_app_description: changelog,
       beta_app_feedback_email: "feedback@firefoxapp.com",
       itc_provider: "abcde12345" # pass a specific value to the iTMSTransporter -itc_provider option
-    )
+      )
       
     increment_build_number(xcodeproj: "Client.xcodeproj")
     commit_version_bump(
@@ -75,6 +78,8 @@ platform :ios do
     add_git_tag(grouping: "testing")
     push_to_git_remote
     push_git_tags
+    post_to_slack(message: "Distributed a new build to TestFlight.", success: true, payload: {"changelog": changelog})
+
   end
 
   lane :release do
@@ -116,6 +121,18 @@ platform :ios do
   end
 end
 
+private_lane :post_to_slack do |options|
+    message = options[:message]
+    success = options[:success]
+    payload = options[:payload]
+    version     = get_version_number(xcodeproj: "Client.xcodeproj")
+    build       = get_build_number(xcodeproj: "Client.xcodeproj")
+    slack(
+      message: message + " :" + version + ":" + build,
+      slack_url: "https://hooks.slack.com/services/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",    
+      success: success,
+      payload: payload)
+end
 
 # More information about multiple platforms in fastlane: https://github.com/fastlane/fastlane/blob/master/fastlane/docs/Platforms.md
 # All available actions: https://docs.fastlane.tools/actions
