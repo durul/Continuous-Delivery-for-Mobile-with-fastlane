@@ -16,8 +16,10 @@ fastlane_version "2.41.0"
 default_platform :ios
 
 platform :ios do
+  ############################## PRE ##############################
   before_all do
     update_fastlane
+    git_pull
     carthage(
       command: "bootstrap",
       platform: "iOS",
@@ -26,19 +28,25 @@ platform :ios do
     match(git_url: "git@bitbucket.org:doron_katz/my-fastlane-keys.git",
       type: "adhoc",
       app_identifier: "com.doronkatz.firefox")
+      test
   end
 
+#------------------------- Test -------------------------#
   desc "Runs all the tests"
   lane :test do
+    build
     scan
     post_to_slack(message: "Successfuly ran all the unit tests", success: true, payload: {})
   end
 
+  #------------------------- Screenshots -------------------------#
   lane :gen_screenshots do
     snapshot
     frameit(white: true, path: './fastlane/screenshots')
+    post_to_slack(message: "Successfuly generated new screenshots", success: true, payload: {})
   end
 
+  #------------------------- Build -------------------------#
   lane :build do
     gym(scheme: "Fennec",
       output_name:"firefox.ipa",
@@ -49,9 +57,11 @@ platform :ios do
     post_to_slack(message: "Successfuly completed a new build", success: true, payload: {})
 
   end
+
+  ############################## DISTRIBUTION ##############################
+
+  #------------------------- Beta -------------------------#
   lane :beta do
-    ensure_git_status_clean
-    git_pull
     register_devices(devices_file: "devices.txt")
     gym(scheme: "Fennec",
         output_name:"firefox.ipa",
@@ -59,8 +69,6 @@ platform :ios do
         silent: false,
         output_directory: "./Export"
       )
-    scan
-    changelog = changelog_from_git_commits(pretty: '%h %s')
     testflight(
       username: "doronkatz@mac.com",
       app_identifier: "com.doronkatz.firefox",
@@ -75,19 +83,18 @@ platform :ios do
       xcodeproj: "Client.xcodeproj",
       force: true
     )
+    changelog = changelog_from_git_commits(pretty: '%h %s')
     add_git_tag(grouping: "testing")
-    push_to_git_remote
-    push_git_tags
-    post_to_slack(message: "Distributed a new build to TestFlight.", success: true, payload: {"changelog": changelog})
-
+    post_to_slack(message: "Distributed new build to TestFlight.", success: true, payload: {"changelog": changelog, "build": get_build_number, "version": get_version_number})
   end
 
+  #------------------------- App Store -------------------------#
   lane :release do
     # by default deliver will call precheck and warn you of any problems
     # if you want precheck to halt submitting to app review, you can pass
     # precheck_default_rule_level: :error
     deliver(precheck_default_rule_level: :error)
-    snapshot
+    gen_screenshots
     produce(
       username: 'doronkatz@mac.com',
       app_identifier: 'com.doronkatz.firefox',
@@ -103,24 +110,28 @@ platform :ios do
     )
   end
 
-  # You can define as many lanes as you want
-
+  ############################## POST ##############################
+  
   after_all do |lane|
-    # This block is called, only if the executed lane was successful
+    changelog = changelog_from_git_commits(pretty: '%h %s')
 
-    # slack(
-    #   message: "Successfully deployed new App Update."
-    # )
+    commit_version_bump(
+      message: 'Build Version Bump by fastlane',
+      xcodeproj: "Client.xcodeproj",
+      force: true
+    )
+    post_to_slack(message: "Successfuly ran fastlane with lane '#(lane).", success: true, payload: {"lane": lane})
+    push_to_git_remote
   end
 
+  ############################## EXCEPTION HANDLING ##############################
   error do |lane, exception|
-    # slack(
-    #   message: exception.message,
-    #   success: false
-    # )
+    post_to_slack(message: "fastlane encountered the error ‘#(exception)’ emanating from the lane ‘#(lane)’.", success: true, payload: {“exception”: exception, “lane”: lane})
   end
 end
 
+############################## PRIVATE LANES ##############################
+#------------------------- post_to_slack -------------------------#
 private_lane :post_to_slack do |options|
     message = options[:message]
     success = options[:success]
@@ -133,9 +144,3 @@ private_lane :post_to_slack do |options|
       success: success,
       payload: payload)
 end
-
-# More information about multiple platforms in fastlane: https://github.com/fastlane/fastlane/blob/master/fastlane/docs/Platforms.md
-# All available actions: https://docs.fastlane.tools/actions
-
-# fastlane reports which actions are used. No personal data is recorded. 
-# Learn more at https://github.com/fastlane/fastlane#metrics
