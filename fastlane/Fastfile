@@ -27,7 +27,7 @@ platform :ios do
     )
     match(git_url: "git@bitbucket.org:doron_katz/my-fastlane-keys.git",
       type: "adhoc",
-      app_identifier: "com.doronkatz.firefox")
+      app_identifier: CredentialsManager::AppfileConfig.try_fetch_value(:app_identifier))
       test
   end
 
@@ -70,8 +70,8 @@ platform :ios do
         output_directory: "./Export"
       )
     testflight(
-      username: "doronkatz@mac.com",
-      app_identifier: "com.doronkatz.firefox",
+      username: CredentialsManager::AppfileConfig.try_fetch_value(:apple_id),
+      app_identifier: CredentialsManager::AppfileConfig.try_fetch_value(:app_identifier),
       beta_app_description: changelog,
       beta_app_feedback_email: "feedback@firefoxapp.com",
       itc_provider: "abcde12345" # pass a specific value to the iTMSTransporter -itc_provider option
@@ -96,8 +96,8 @@ platform :ios do
     deliver(precheck_default_rule_level: :error)
     gen_screenshots
     produce(
-      username: 'doronkatz@mac.com',
-      app_identifier: 'com.doronkatz.firefox',
+      username: CredentialsManager::AppfileConfig.try_fetch_value(:apple_id),
+      app_identifier: CredentialsManager::AppfileConfig.try_fetch_value(:app_identifier),
       app_name: 'Firefox for iOS',
       language: 'English',
       app_version: '1.0',
