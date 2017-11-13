@@ -48,12 +48,7 @@ platform :ios do
 
   #------------------------- Build -------------------------#
   lane :build do
-    gym(scheme: "Fennec",
-      output_name:"firefox.ipa",
-      silent: false,
-      export_method: "ad-hoc",
-      output_directory: "./Export"
-        )
+    gym
     post_to_slack(message: "Successfuly completed a new build", success: true, payload: {})
 
   end
@@ -63,12 +58,7 @@ platform :ios do
   #------------------------- Beta -------------------------#
   lane :beta do
     register_devices(devices_file: "devices.txt")
-    gym(scheme: "Fennec",
-        output_name:"firefox.ipa",
-        export_method: "ad-hoc",
-        silent: false,
-        output_directory: "./Export"
-      )
+    gym
     testflight(
       username: CredentialsManager::AppfileConfig.try_fetch_value(:apple_id),
       app_identifier: CredentialsManager::AppfileConfig.try_fetch_value(:app_identifier),

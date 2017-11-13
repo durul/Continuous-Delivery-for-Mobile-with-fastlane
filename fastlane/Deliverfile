@@ -8,3 +8,15 @@
 
 app_identifier "com.doronkatz.firefox" # The bundle identifier of your app
 username "doronkatz@mac.com" # your Apple ID user
+
+release_notes({
+  'default' => "a new and interesting app",
+  'de-FR' => "une nouvelle application intéressante"
+})
+description({
+	'default' => "Firefox for iOS",
+	'de-FR' => "firefox pour ios"
+})
+support_url({
+	'default' => "https://firefox.com"
+})
