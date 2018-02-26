@@ -25,7 +25,8 @@ platform :ios do
       platform: "iOS",
       use_binaries: false
     )
-    match(git_url: "git@bitbucket.org:doron_katz/my-fastlane-keys.git",
+    
+    match(git_url: "git@bitbucket.org:doron_katz/my-fastlane-keys.git", # Alias for the sync_code_signing action
       type: "adhoc",
       app_identifier: CredentialsManager::AppfileConfig.try_fetch_value(:app_identifier))
       test
@@ -35,19 +36,20 @@ platform :ios do
   desc "Runs all the tests"
   lane :test do
     build
-    scan
+    scan # Alias for the run_tests action
     post_to_slack(message: "Successfuly ran all the unit tests", success: true, payload: {})
   end
 
   #------------------------- Screenshots -------------------------#
   lane :gen_screenshots do
-    snapshot
-    frameit(white: true, path: './fastlane/screenshots')
+    snapshot # Alias for the capture_ios_screenshots action
+    frameit(white: true, path: './fastlane/screenshots') # Alias for the frame_screenshots action
     post_to_slack(message: "Successfuly generated new screenshots", success: true, payload: {})
   end
 
   #------------------------- Build -------------------------#
   lane :build do
+    # Alias for the build_ios_app action
     gym
     post_to_slack(message: "Successfuly completed a new build", success: true, payload: {})
 
@@ -58,8 +60,8 @@ platform :ios do
   #------------------------- Beta -------------------------#
   lane :beta do
     register_devices(devices_file: "devices.txt")
-    gym
-    testflight(
+    gym # Alias for the build_ios_app action
+    testflight( # Alias for the upload_to_testflight action
       username: CredentialsManager::AppfileConfig.try_fetch_value(:apple_id),
       app_identifier: CredentialsManager::AppfileConfig.try_fetch_value(:app_identifier),
       beta_app_description: changelog,
@@ -83,9 +85,10 @@ platform :ios do
     # by default deliver will call precheck and warn you of any problems
     # if you want precheck to halt submitting to app review, you can pass
     # precheck_default_rule_level: :error
-    deliver(precheck_default_rule_level: :error)
+    deliver(precheck_default_rule_level: :error) # Alias for the upload_to_app_store action
     gen_screenshots
-    produce(
+    
+    produce( # Alias for the create_app_online action
       username: CredentialsManager::AppfileConfig.try_fetch_value(:apple_id),
       app_identifier: CredentialsManager::AppfileConfig.try_fetch_value(:app_identifier),
       app_name: 'Firefox for iOS',
@@ -93,7 +96,7 @@ platform :ios do
       app_version: '1.0',
       team_name: 'Doron Katz' # only necessary when in multiple teams
     )
-    deliver(
+    deliver( # Alias for the upload_to_app_store action
       submit_for_review: true,
       force: true,
       metadata_path: "./metadata"
